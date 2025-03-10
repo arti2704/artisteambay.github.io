@@ -172,3 +172,61 @@ footer {
 footer p {
     margin: 0;
 }
+
+/* Стили для страницы рассрочки */
+.installment {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.installment form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.installment label {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.installment input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.installment button {
+    padding: 10px;
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.installment button:hover {
+    background-color: #005fa3;
+}
+
+.installment .result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.installment .result h3 {
+    margin-bottom: 10px;
+    color: #0077cc;
+}
+
+.installment .result p {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
