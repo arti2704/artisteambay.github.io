@@ -230,3 +230,25 @@ footer {
 footer p {
     margin: 0;
 }
+
+/* Стили для страницы профиля */
+.profile {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.profile-info {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.profile-info p {
+    margin: 10px 0;
+}
+
+.profile-info strong {
+    color: #0077cc;
+}
