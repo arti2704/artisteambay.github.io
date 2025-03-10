@@ -32,16 +32,4 @@ function updateCart() {
 }
 
 // Добавляем обработчики событий для кнопок "Купить"
-document.querySelectorAll('.buy-button').forEach(button => {
-    button.addEventListener('click', () => {
-        const price = parseInt(button.getAttribute('data-price'));
-        addToCart(price);
-    });
-});
-
-// Обработчик для кнопки "Оформить заказ"
-document.querySelector('.checkout-button').addEventListener('click', () => {
-    alert('Заказ оформлен! Спасибо за покупку!');
-    cart = [];
-    updateCart();
-});
+document.querySelectorAll('.

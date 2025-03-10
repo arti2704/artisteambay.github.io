@@ -67,13 +67,13 @@ section h2 {
 }
 
 /* Проекты и товары */
-.project-list, .product-list {
+.project-list, .product-list, .activity-list, .story-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.project, .product {
+.project, .product, .activity, .story {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -82,11 +82,11 @@ section h2 {
     transition: transform 0.3s ease;
 }
 
-.project:hover, .product:hover {
+.project:hover, .product:hover, .activity:hover, .story:hover {
     transform: translateY(-10px);
 }
 
-.project h3, .product h3 {
+.project h3, .product h3, .activity h3, .story h3 {
     margin-top: 0;
     color: #0077cc;
 }
@@ -160,20 +160,7 @@ section h2 {
     background-color: #ff3b2f;
 }
 
-/* Подвал */
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-}
-
-footer p {
-    margin: 0;
-}
-
-/* Стили для страницы рассрочки */
+/* Рассрочка */
 .installment {
     background: #fff;
     padding: 20px;
@@ -229,4 +216,17 @@ footer p {
     margin: 0;
     font-size: 1.5em;
     color: #333;
+}
+
+/* Подвал */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
 }
