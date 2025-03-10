@@ -10,7 +10,10 @@ function updateCart() {
     const cartItems = document.querySelector('.cart-items');
     const totalPrice = document.getElementById('total-price');
 
+    // Очищаем корзину перед обновлением
     cartItems.innerHTML = '';
+
+    // Добавляем товары в корзину
     cart.forEach((price, index) => {
         const item = document.createElement('div');
         item.classList.add('cart-item');
@@ -21,6 +24,7 @@ function updateCart() {
         cartItems.appendChild(item);
     });
 
+    // Считаем общую сумму
     const total = cart.reduce((sum, price) => sum + price, 0);
     totalPrice.textContent = total;
 

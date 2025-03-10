@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Договорные листы</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        .contract-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contract-form input, .contract-form select, .contract-form textarea {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contract-form button {
+            padding: 10px;
+            background-color: #0077cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contract-preview {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .add-field-button {
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="fails/girliad.gif" alt="Гирлянда" class="girliad">
+            <img src="fails/FotoIO.jpg" alt="Логотип" class="logo">
+            <h1>Договорные листы</h1>
+            <nav>
+                <a href="index.html" class="button">На главную</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="contract">
+        <div class="container">
+            <h2>Создание договора</h2>
+            <form id="contract-form" class="contract-form">
+                <label for="contract-type">Тип договора:</label>
+                <select id="contract-type" name="contract-type">
+                    <option value="rent">Аренда</option>
+                    <option value="sale">Продажа</option>
+                    <option value="service">Услуги</option>
+                </select>
+
+                <label for="full-name">ФИО:</label>
+                <input type="text" id="full-name" name="full-name" required>
+
+                <label for="address">Адрес:</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="contract-amount">Сумма договора (руб):</label>
+                <input type="number" id="contract-amount" name="contract-amount" required>
+
+                <label for="contract-term">Срок договора (месяцы):</label>
+                <input type="number" id="contract-term" name="contract-term" required>
+
+                <div id="additional-fields">
+                    <!-- Дополнительные поля будут добавляться здесь -->
+                </div>
+
+                <button type="button" class="add-field-button" onclick="addField()">Добавить поле</button>
+                <button type="submit">Создать договор</button>
+            </form>
+
+            <div class="contract-preview" id="contract-preview">
+                <h3>Предпросмотр договора</h3>
+                <p>Здесь будет отображаться предпросмотр вашего договора.</p>
+            </div>
+
+            <button id="download-pdf" class="button" disabled>Скачать PDF</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 [Твоё имя]. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Логика для генерации договора и PDF
+        const { jsPDF } = window.jspdf;
+
+        document.getElementById('contract-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const contractType = document.getElementById('contract-type').value;
+            const fullName = document.getElementById('full-name').value;
+            const address = document.getElementById('address').value;
+            const amount = document.getElementById('contract-amount').value;
+            const term = document.getElementById('contract-term').value;
+
+            const additionalFields = document.querySelectorAll('#additional-fields input');
+            let additionalFieldsText = '';
+            additionalFields.forEach(field => {
+                additionalFieldsText += `<p><strong>${field.placeholder}:</strong> ${field.value}</p>`;
+            });
+
+            const contractPreview = document.getElementById('contract-preview');
+            contractPreview.innerHTML = `
+                <h3>Договор</h3>
+                <p><strong>Тип договора:</strong> ${contractType}</p>
+                <p><strong>ФИО:</strong> ${fullName}</p>
+                <p><strong>Адрес:</strong> ${address}</p>
+                <p><strong>Сумма:</strong> ${amount} руб</p>
+                <p><strong>Срок:</strong> ${term} месяцев</p>
+                ${additionalFieldsText}
+            `;
+
+            document.getElementById('download-pdf').disabled = false;
+        });
+
+        document.getElementById('download-pdf').addEventListener('click', function () {
+            const doc = new jsPDF();
+            const contractContent = document.getElementById('contract-preview').innerText;
+            doc.setFontSize(12);
+            doc.text(contractContent, 10, 10);
+            doc.save('contract.pdf');
+        });
+
+        // Функция для добавления дополнительных полей
+        function addField() {
+            const additionalFields = document.getElementById('additional-fields');
+            const fieldCount = additionalFields.children.length + 1;
+
+            const newField = document.createElement('input');
+            newField.type = 'text';
+            newField.placeholder = `Дополнительное поле ${fieldCount}`;
+            newField.required = true;
+
+            additionalFields.appendChild(newField);
+        }
+    </script>
+</body>
+</html

@@ -21,25 +21,42 @@ header {
     color: #fff;
     padding: 60px 0;
     text-align: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .girliad {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 header .logo {
     width: 100px;
     height: auto;
     margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 header h1 {
     margin: 0;
     font-size: 3em;
+    position: relative;
+    z-index: 2;
 }
 
-header p {
-    font-size: 1.5em;
-    margin-top: 10px;
+header nav {
+    margin-top: 20px;
+    position: relative;
+    z-index: 3;
 }
 
-/* Кнопка */
+/* Кнопки */
 .button {
     display: inline-block;
     padding: 10px 20px;
@@ -47,48 +64,46 @@ header p {
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    margin: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .button:hover {
     background-color: #ff3b2f;
+    transform: translateY(-2px);
 }
 
-/* Секции */
-section {
+/* Товары */
+.products {
     padding: 40px 0;
 }
 
-section h2 {
+.products h2 {
     font-size: 2.5em;
-    margin-bottom: 20px;
     color: #0077cc;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-/* Проекты и товары */
-.project-list, .product-list, .activity-list, .story-list {
+.product-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.project, .product, .activity, .story {
+.product {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    flex: 1 1 calc(33.333% - 20px);
-    transition: transform 0.3s ease;
+    flex: 1 1 calc(25% - 20px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
 }
 
-.project:hover, .product:hover, .activity:hover, .story:hover {
+.product:hover {
     transform: translateY(-10px);
-}
-
-.project h3, .product h3, .activity h3, .story h3 {
-    margin-top: 0;
-    color: #0077cc;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .product img {
@@ -97,10 +112,23 @@ section h2 {
     margin-bottom: 15px;
 }
 
+.product h3 {
+    margin-top: 0;
+    color: #0077cc;
+    font-size: 1.5em;
+}
+
+.product p {
+    font-size: 1em;
+    color: #666;
+    margin: 10px 0;
+}
+
 .product .price {
     font-size: 1.5em;
     color: #333;
     margin: 10px 0;
+    font-weight: bold;
 }
 
 .buy-button {
@@ -112,11 +140,12 @@ section h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .buy-button:hover {
     background-color: #005fa3;
+    transform: translateY(-2px);
 }
 
 /* Корзина */
@@ -126,6 +155,12 @@ section h2 {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 40px;
+}
+
+.cart h2 {
+    font-size: 2em;
+    color: #0077cc;
+    margin-bottom: 20px;
 }
 
 .cart-items {
@@ -142,9 +177,10 @@ section h2 {
 .total {
     font-size: 1.5em;
     text-align: right;
+    margin: 20px 0;
 }
 
-.checkout-button {
+.calculate-order-button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -153,11 +189,12 @@ section h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.checkout-button:hover {
+.calculate-order-button:hover {
     background-color: #ff3b2f;
+    transform: translateY(-2px);
 }
 
 /* Рассрочка */
@@ -167,6 +204,12 @@ section h2 {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 40px;
+}
+
+.installment h2 {
+    font-size: 2em;
+    color: #0077cc;
+    margin-bottom: 20px;
 }
 
 .installment form {
@@ -194,11 +237,12 @@ section h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .installment button:hover {
     background-color: #005fa3;
+    transform: translateY(-2px);
 }
 
 .installment .result {
@@ -230,217 +274,3 @@ footer {
 footer p {
     margin: 0;
 }
-
-/* Стили для кнопки "Рассчитать рассрочку" */
-.installment-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-}
-
-.installment-button:hover {
-    background-color: #218838;
-}
-
-/* Стили для объединённой секции корзины и рассрочки */
-.cart-and-installment {
-    display: flex;
-    gap: 20px;
-    margin-top: 40px;
-}
-
-.cart-and-installment .container {
-    display: flex;
-    gap: 20px;
-}
-
-.cart-and-installment .cart,
-.cart-and-installment .installment {
-    flex: 1;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.cart-and-installment h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #0077cc;
-}
-
-.cart-and-installment .cart-items {
-    margin-bottom: 20px;
-}
-
-.cart-and-installment .cart-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.cart-and-installment .total {
-    font-size: 1.5em;
-    text-align: right;
-}
-
-.cart-and-installment .checkout-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #ff6f61;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.cart-and-installment .checkout-button:hover {
-    background-color: #ff3b2f;
-}
-
-.cart-and-installment .installment form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.cart-and-installment .installment label {
-    font-size: 1.2em;
-    color: #333;
-}
-
-.cart-and-installment .installment input {
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.cart-and-installment .installment button {
-    padding: 10px;
-    background-color: #0077cc;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.cart-and-installment .installment button:hover {
-    background-color: #005fa3;
-}
-
-.cart-and-installment .installment .result {
-    margin-top: 20px;
-    font-size: 1.2em;
-    text-align: center;
-}
-
-.cart-and-installment .installment .result h3 {
-    margin-bottom: 10px;
-    color: #0077cc;
-}
-
-.cart-and-installment .installment .result p {
-    margin: 0;
-    font-size: 1.5em;
-    color: #333;
-}
-
-/* Стили для кнопки "Рассчитать заказ" */
-.calculate-order-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #0077cc;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.calculate-order-button:hover {
-    background-color: #005fa3;
-}
-
-/* Стили для результата рассчёта */
-#monthly-payment {
-    font-weight: bold;
-    color: #28a745;
-}
-
-/* Общие стили */
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-    line-height: 1.6;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Шапка */
-header {
-    position: relative;
-    background: #0077cc;
-    color: #fff;
-    padding: 60px 0;
-    text-align: center;
-    overflow: hidden;
-}
-
-header .girliad {
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    animation: glow 2s infinite; /* Анимация мерцания */
-}
-
-@keyframes glow {
-    0% { opacity: 0.8; }
-    50% { opacity: 1; }
-    100% { opacity: 0.8; }
-}
-
-header .logo {
-    width: 100px;
-    height: auto;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 2;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 3em;
-    position: relative;
-    z-index: 2;
-}
-
-header nav {
-    position: relative;
-    z-index: 2;
-}
-
-/* Остальные стили остаются без изменений */
