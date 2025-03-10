@@ -42,19 +42,29 @@ document.getElementById('installment-form').addEventListener('submit', function 
 
     const amount = parseFloat(document.getElementById('amount').value);
     const months = parseFloat(document.getElementById('months').value);
-    const interest = parseFloat(document.getElementById('interest').value);
 
-    const monthlyInterest = (interest / 100) / 12;
-    const numerator = amount * monthlyInterest * Math.pow(1 + monthlyInterest, months);
-    const denominator = Math.pow(1 + monthlyInterest, months) - 1;
-    const monthlyPayment = (numerator / denominator).toFixed(2);
+    if (isNaN(amount) || isNaN(months) || months <= 0) {
+        alert('Пожалуйста, введите корректные данные.');
+        return;
+    }
 
+    const monthlyPayment = (amount / months).toFixed(2);
     document.getElementById('monthly-payment').textContent = monthlyPayment;
 });
 
-// Логика кнопки "Оформить заказ"
-document.querySelector('.checkout-button').addEventListener('click', () => {
-    alert('Заказ оформлен! Спасибо за покупку!');
-    cart = [];
-    updateCart();
+// Логика кнопки "Рассчитать заказ"
+document.querySelector('.calculate-order-button').addEventListener('click', () => {
+    const totalPrice = parseFloat(document.getElementById('total-price').textContent);
+    const months = parseFloat(document.getElementById('months').value);
+
+    if (isNaN(months) || months <= 0) {
+        alert('Пожалуйста, введите срок рассрочки.');
+        return;
+    }
+
+    const monthlyPayment = (totalPrice / months).toFixed(2);
+    document.getElementById('amount').value = totalPrice;
+    document.getElementById('monthly-payment').textContent = monthlyPayment;
+
+    alert(`Заказ рассчитан!\nЕжемесячный платёж: ${monthlyPayment}р`);
 });
