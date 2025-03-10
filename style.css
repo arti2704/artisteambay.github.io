@@ -23,6 +23,12 @@ header {
     text-align: center;
 }
 
+header .logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
 header h1 {
     margin: 0;
     font-size: 3em;
@@ -61,13 +67,13 @@ section h2 {
 }
 
 /* Проекты и товары */
-.project-list, .product-list, .activity-list, .story-list {
+.project-list, .product-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.project, .product, .activity, .story {
+.project, .product {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -76,13 +82,82 @@ section h2 {
     transition: transform 0.3s ease;
 }
 
-.project:hover, .product:hover, .activity:hover, .story:hover {
+.project:hover, .product:hover {
     transform: translateY(-10px);
 }
 
-.project h3, .product h3, .activity h3, .story h3 {
+.project h3, .product h3 {
     margin-top: 0;
     color: #0077cc;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.product .price {
+    font-size: 1.5em;
+    color: #333;
+    margin: 10px 0;
+}
+
+.buy-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #005fa3;
+}
+
+/* Корзина */
+.cart {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.total {
+    font-size: 1.5em;
+    text-align: right;
+}
+
+.checkout-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+    background-color: #ff3b2f;
 }
 
 /* Подвал */
@@ -96,16 +171,4 @@ footer {
 
 footer p {
     margin: 0;
-}
-
-/* Стили для фотографий товаров */
-.product img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    transition: transform 0.3s ease;
-}
-
-.product img:hover {
-    transform: scale(1.05);
 }
