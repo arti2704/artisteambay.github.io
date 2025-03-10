@@ -23,6 +23,9 @@ function updateCart() {
 
     const total = cart.reduce((sum, price) => sum + price, 0);
     totalPrice.textContent = total;
+
+    // Автоматически подставляем общую сумму в калькулятор рассрочки
+    document.getElementById('amount').value = total;
 }
 
 // Логика кнопок "Купить"
@@ -30,14 +33,6 @@ document.querySelectorAll('.buy-button').forEach(button => {
     button.addEventListener('click', () => {
         const price = parseInt(button.getAttribute('data-price'));
         addToCart(price);
-    });
-});
-
-// Логика кнопок "Рассчитать рассрочку"
-document.querySelectorAll('.installment-button').forEach(button => {
-    button.addEventListener('click', () => {
-        const price = parseInt(button.getAttribute('data-price'));
-        document.getElementById('amount').value = price;
     });
 });
 

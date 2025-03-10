@@ -248,3 +248,111 @@ footer p {
 .installment-button:hover {
     background-color: #218838;
 }
+
+/* Стили для объединённой секции корзины и рассрочки */
+.cart-and-installment {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.cart-and-installment .container {
+    display: flex;
+    gap: 20px;
+}
+
+.cart-and-installment .cart,
+.cart-and-installment .installment {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-and-installment h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #0077cc;
+}
+
+.cart-and-installment .cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-and-installment .cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-and-installment .total {
+    font-size: 1.5em;
+    text-align: right;
+}
+
+.cart-and-installment .checkout-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-and-installment .checkout-button:hover {
+    background-color: #ff3b2f;
+}
+
+.cart-and-installment .installment form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart-and-installment .installment label {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.cart-and-installment .installment input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cart-and-installment .installment button {
+    padding: 10px;
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-and-installment .installment button:hover {
+    background-color: #005fa3;
+}
+
+.cart-and-installment .installment .result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.cart-and-installment .installment .result h3 {
+    margin-bottom: 10px;
+    color: #0077cc;
+}
+
+.cart-and-installment .installment .result p {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
