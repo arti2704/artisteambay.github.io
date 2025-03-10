@@ -230,3 +230,21 @@ footer {
 footer p {
     margin: 0;
 }
+
+/* Стили для кнопки "Рассчитать рассрочку" */
+.installment-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.installment-button:hover {
+    background-color: #218838;
+}

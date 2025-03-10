@@ -29,6 +29,7 @@
                     <p>Описание товара 1.</p>
                     <p class="price">9.999р</p>
                     <button class="buy-button" data-price="9999">Купить</button>
+                    <button class="installment-button" data-price="9999">Рассчитать рассрочку</button>
                 </div>
                 <!-- Товар 2 -->
                 <div class="product">
@@ -37,6 +38,7 @@
                     <p>Описание товара 2.</p>
                     <p class="price">160.000р</p>
                     <button class="buy-button" data-price="160000">Купить</button>
+                    <button class="installment-button" data-price="160000">Рассчитать рассрочку</button>
                 </div>
                 <!-- Товар 3 -->
                 <div class="product">
@@ -45,6 +47,7 @@
                     <p>Описание товара 3.</p>
                     <p class="price">57.000р</p>
                     <button class="buy-button" data-price="57000">Купить</button>
+                    <button class="installment-button" data-price="57000">Рассчитать рассрочку</button>
                 </div>
                 <!-- Товар 4 -->
                 <div class="product">
@@ -53,7 +56,31 @@
                     <p>Описание товара 4.</p>
                     <p class="price">32.000р</p>
                     <button class="buy-button" data-price="32000">Купить</button>
+                    <button class="installment-button" data-price="32000">Рассчитать рассрочку</button>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="installment">
+        <div class="container">
+            <h2>Калькулятор рассрочки</h2>
+            <form id="installment-form">
+                <label for="amount">Сумма товара (в рублях):</label>
+                <input type="number" id="amount" name="amount" required>
+
+                <label for="months">Срок рассрочки (в месяцах):</label>
+                <input type="number" id="months" name="months" required>
+
+                <label for="interest">Процентная ставка (в год):</label>
+                <input type="number" id="interest" name="interest" required>
+
+                <button type="submit">Рассчитать</button>
+            </form>
+
+            <div class="result">
+                <h3>Результат:</h3>
+                <p>Ежемесячный платёж: <span id="monthly-payment">0</span>р</p>
             </div>
         </div>
     </section>
