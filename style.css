@@ -1,78 +1,43 @@
 /* Общие стили */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 /* Шапка */
 header {
     background: #0077cc;
     color: #fff;
-    padding: 20px 0;
+    padding: 60px 0;
     text-align: center;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2.5em;
+    font-size: 3em;
 }
 
 header p {
-    font-size: 1.2em;
+    font-size: 1.5em;
+    margin-top: 10px;
 }
 
-/* Секции */
-section {
-    padding: 20px 0;
-}
-
-section h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-/* Проекты */
-.project-list {
-    display: flex;
-    justify-content: space-between;
-}
-
-.project {
-    background: #fff;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 48%;
-}
-
-.project h3 {
-    margin-top: 0;
-}
-
-/* Подвал */
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-}
-
+/* Кнопка */
 .button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #0077cc;
+    background-color: #ff6f61;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -81,5 +46,54 @@ footer {
 }
 
 .button:hover {
-    background-color: #005fa3;
+    background-color: #ff3b2f;
+}
+
+/* Секции */
+section {
+    padding: 40px 0;
+}
+
+section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #0077cc;
+}
+
+/* Проекты и товары */
+.project-list, .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.project, .product {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(50% - 20px);
+    transition: transform 0.3s ease;
+}
+
+.project:hover, .product:hover {
+    transform: translateY(-10px);
+}
+
+.project h3, .product h3 {
+    margin-top: 0;
+    color: #0077cc;
+}
+
+/* Подвал */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
 }
