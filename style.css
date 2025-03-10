@@ -61,26 +61,26 @@ section h2 {
 }
 
 /* Проекты и товары */
-.project-list, .product-list {
+.project-list, .product-list, .activity-list, .story-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.project, .product {
+.project, .product, .activity, .story {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    flex: 1 1 calc(50% - 20px);
+    flex: 1 1 calc(33.333% - 20px);
     transition: transform 0.3s ease;
 }
 
-.project:hover, .product:hover {
+.project:hover, .product:hover, .activity:hover, .story:hover {
     transform: translateY(-10px);
 }
 
-.project h3, .product h3 {
+.project h3, .product h3, .activity h3, .story h3 {
     margin-top: 0;
     color: #0077cc;
 }
