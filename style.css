@@ -97,3 +97,15 @@ footer {
 footer p {
     margin: 0;
 }
+
+/* Стили для фотографий товаров */
+.product img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.product img:hover {
+    transform: scale(1.05);
+}
