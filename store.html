@@ -6,6 +6,29 @@
     <title>Магазин</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .product img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .remove-item {
+            background: none;
+            border: none;
+            color: #ff3b2f;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -71,17 +94,41 @@
     <script>
         // Логика для магазина
         const products = [
-            { name: 'Товар 1', price: 9999, image: 'fails/Foto1.jpg' },
-            { name: 'Товар 2', price: 120000, image: 'fails/Foto2.jpg' },
-            { name: 'Товар 3', price: 75000, image: 'fails/Foto3.jpg' },
-            { name: 'Товар 4', price: 45000, image: 'fails/Foto4.jpg' },
-            { name: 'Товар 5', price: 135000, image: 'fails/Foto1.jpg' },
-            { name: 'Товар 6', price: 80000, image: 'fails/Foto2.jpg' },
-            { name: 'Товар 7', price: 95000, image: 'fails/Foto3.jpg' },
-            { name: 'Товар 8', price: 60000, image: 'fails/Foto4.jpg' },
+            {
+                id: 1,
+                name: 'Товар 1',
+                price: 9999,
+                image: 'fails/Foto1.jpg',
+                country: 'Китай',
+                color: 'Чёрный'
+            },
+            {
+                id: 2,
+                name: 'Товар 2',
+                price: 120000,
+                image: 'fails/Foto2.jpg',
+                country: 'Япония',
+                color: 'Серебристый'
+            },
+            {
+                id: 3,
+                name: 'Товар 3',
+                price: 75000,
+                image: 'fails/Foto3.jpg',
+                country: 'Германия',
+                color: 'Белый'
+            },
+            {
+                id: 4,
+                name: 'Товар 4',
+                price: 45000,
+                image: 'fails/Foto4.jpg',
+                country: 'США',
+                color: 'Красный'
+            },
         ];
 
-        let cart = [];
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         function renderProducts(filteredProducts) {
             const productList = document.getElementById('product-list');
@@ -94,16 +141,21 @@
                     <img src="${product.image}" alt="${product.name}">
                     <h3>${product.name}</h3>
                     <p>Цена: ${product.price} руб</p>
-                    <button class="buy-button" data-price="${product.price}">Купить</button>
+                    <a href="product-details.html?id=${product.id}" class="button">Подробнее</a>
+                    <button class="add-button" data-id="${product.id}">Добавить</button>
                 `;
                 productList.appendChild(productItem);
             });
 
-            document.querySelectorAll('.buy-button').forEach(button => {
+            document.querySelectorAll('.add-button').forEach(button => {
                 button.addEventListener('click', () => {
-                    const price = parseInt(button.getAttribute('data-price'));
-                    cart.push(price);
-                    updateCart();
+                    const productId = parseInt(button.getAttribute('data-id'));
+                    const product = products.find(p => p.id === productId);
+                    if (product) {
+                        cart.push({ id: product.id, price: product.price, name: product.name });
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateCart();
+                    }
                 });
             });
         }
@@ -113,19 +165,29 @@
             const totalPrice = document.getElementById('total-price');
 
             cartItems.innerHTML = '';
-            cart.forEach((price, index) => {
-                const item = document.createElement('div');
-                item.classList.add('cart-item');
-                item.innerHTML = `
-                    <span>Товар ${index + 1}</span>
-                    <span>${price}р</span>
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <span>${item.name} - ${item.price}р</span>
+                    <button class="remove-item" data-index="${index}">×</button>
                 `;
-                cartItems.appendChild(item);
+                cartItems.appendChild(cartItem);
             });
 
-            const total = cart.reduce((sum, price) => sum + price, 0);
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
             totalPrice.textContent = total;
             document.getElementById('amount').value = total;
+
+            // Логика для удаления товара из корзины
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', () => {
+                    const index = parseInt(button.getAttribute('data-index'));
+                    cart.splice(index, 1);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCart();
+                });
+            });
         }
 
         document.getElementById('price-range').addEventListener('input', function () {
@@ -137,6 +199,7 @@
 
         // Первоначальная загрузка товаров
         renderProducts(products);
+        updateCart();
 
         // Логика рассрочки
         document.getElementById('installment-form').addEventListener('submit', function (event) {

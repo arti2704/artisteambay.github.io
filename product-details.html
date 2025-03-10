@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали товара</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .product-details {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .product-images {
+            flex: 1;
+        }
+        .product-images img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .product-info {
+            flex: 2;
+        }
+        .product-info h2 {
+            margin-top: 0;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0077cc;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="fails/girliad.gif" alt="Гирлянда" class="girliad">
+            <img src="fails/FotoIO.jpg" alt="Логотип" class="logo">
+            <h1>Детали товара</h1>
+            <nav>
+                <a href="index.html" class="button">Главная</a>
+                <a href="store.html" class="button">Назад</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="product-details">
+        <div class="container">
+            <div class="product-images">
+                <img src="fails/Foto1.jpg" alt="Фото товара 1">
+                <img src="fails/Foto2.jpg" alt="Фото товара 2">
+                <img src="fails/Foto3.jpg" alt="Фото товара 3">
+            </div>
+            <div class="product-info">
+                <h2 id="product-name">Товар 1</h2>
+                <p id="product-description">Этот товар является примером качественного продукта. Он идеально подходит для повседневного использования.</p>
+                <p><strong>Цена:</strong> <span id="product-price">9999</span> руб</p>
+                <p><strong>Страна производства:</strong> <span id="product-country">Китай</span></p>
+                <p><strong>Цвет:</strong> <span id="product-color">Чёрный</span></p>
+                <button class="add-button" data-id="1">Добавить</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 [Твоё имя]. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Логика для передачи данных о товаре через URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        const products = [
+            {
+                id: 1,
+                name: 'Товар 1',
+                description: 'Этот товар является примером качественного продукта. Он идеально подходит для повседневного использования.',
+                price: 9999,
+                country: 'Китай',
+                color: 'Чёрный',
+                images: ['fails/Foto1.jpg', 'fails/Foto2.jpg', 'fails/Foto3.jpg']
+            },
+            {
+                id: 2,
+                name: 'Товар 2',
+                description: 'Этот товар отличается высокой прочностью и долговечностью.',
+                price: 120000,
+                country: 'Япония',
+                color: 'Серебристый',
+                images: ['fails/Foto2.jpg', 'fails/Foto1.jpg', 'fails/Foto4.jpg']
+            },
+            // Добавь остальные товары по аналогии
+        ];
+
+        const product = products.find(p => p.id == productId);
+
+        if (product) {
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-description').textContent = product.description;
+            document.getElementById('product-price').textContent = product.price;
+            document.getElementById('product-country').textContent = product.country;
+            document.getElementById('product-color').textContent = product.color;
+
+            const productImages = document.querySelector('.product-images');
+            productImages.innerHTML = '';
+            product.images.forEach(image => {
+                const img = document.createElement('img');
+                img.src = image;
+                productImages.appendChild(img);
+            });
+
+            // Обновляем кнопку "Добавить" с правильными данными
+            const addButton = document.querySelector('.add-button');
+            addButton.setAttribute('data-id', product.id);
+        }
+
+        // Логика для добавления товара в корзину
+        document.querySelector('.add-button').addEventListener('click', () => {
+            const productId = parseInt(document.querySelector('.add-button').getAttribute('data-id'));
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push({ id: product.id, price: product.price, name: product.name });
+                localStorage.setItem('cart', JSON.stringify(cart));
+                window.location.href = 'store.html'; // Переход в магазин после добавления
+            }
+        });
+    </script>
+</body>
+</html>
