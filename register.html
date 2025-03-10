@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="fails/FotoIO.jpg" alt="Логотип" class="logo">
+            <h1>Регистрация</h1>
+            <nav>
+                <a href="index.html" class="button">На главную</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="register">
+        <div class="container">
+            <h2>Создайте новый аккаунт</h2>
+            <form id="register-form">
+                <label for="username">Имя пользователя:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="role">Роль:</label>
+                <select id="role" name="role" required>
+                    <option value="guest">Гость</option>
+                    <option value="moderator">Модератор</option>
+                    <option value="admin">Администратор</option>
+                </select>
+
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+            <p>Уже есть аккаунт? <a href="login.html">Войдите</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 [Твоё имя]. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+</body>
+</html>

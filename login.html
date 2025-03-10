@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин</title>
+    <title>Вход</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -11,29 +11,26 @@
     <header>
         <div class="container">
             <img src="fails/FotoIO.jpg" alt="Логотип" class="logo">
-            <h1>Магазин</h1>
+            <h1>Вход</h1>
             <nav>
                 <a href="index.html" class="button">На главную</a>
-                <a href="login.html" class="button">Войти</a>
             </nav>
         </div>
     </header>
 
-    <section class="products">
+    <section class="login">
         <div class="container">
-            <h2>Наши товары</h2>
-            <div class="product-list">
-                <!-- Товары будут добавлены через JavaScript -->
-            </div>
-        </div>
-    </section>
+            <h2>Войдите в свой аккаунт</h2>
+            <form id="login-form">
+                <label for="username">Имя пользователя:</label>
+                <input type="text" id="username" name="username" required>
 
-    <section class="cart">
-        <div class="container">
-            <h2>Корзина</h2>
-            <div class="cart-items"></div>
-            <p class="total">Итого: <span id="total-price">0</span>р</p>
-            <button class="checkout-button">Оформить заказ</button>
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Войти</button>
+            </form>
+            <p>Нет аккаунта? <a href="register.html">Зарегистрируйтесь</a></p>
         </div>
     </section>
 
@@ -43,6 +40,6 @@
         </div>
     </footer>
 
-    <script src="store.js"></script>
+    <script src="auth.js"></script>
 </body>
 </html>
